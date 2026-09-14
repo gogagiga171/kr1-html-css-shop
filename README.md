@@ -30,3 +30,6 @@
 
 Создана базовая структура проекта.
 
+## Ссылка на опубликованный проект
+
+GitHub Pages: https://gogagiga171.github.io/kr1-html-css-shop/
