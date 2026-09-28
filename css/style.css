@@ -85,6 +85,11 @@ a:focus-visible {
 .site-header {
   max-width: 1100px;
   margin: 0 auto;
+  display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-md);
 }
 
 .site-logo {
@@ -97,6 +102,8 @@ a:focus-visible {
   padding: 0;
   margin: 16px 0 0;
   list-style: none;
+    display: flex;
+    gap: var(--space-md);
 }
 
 .site-nav__list li {
@@ -131,6 +138,12 @@ a:focus-visible {
 
 .section h2 {
   margin-top: 0;
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-lg)
 }
 
 .product-card {
