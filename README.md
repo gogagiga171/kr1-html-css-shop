@@ -79,3 +79,4 @@ GitHub Pages: https://gogagiga171.github.io/kr1-html-css-shop/
 - состояния `:hover`, `:focus-visible`, `:disabled`;
 - визуальная подсветка ошибочных полей через `aria-invalid`;
 - структурированный файл `css/style.css`.
+
