@@ -7,7 +7,7 @@
   --color-bg: #ffffff;
   --color-text: #222222;
   --color-muted: #666666;
-  --color-primary: #0057b8;
+  --color-primary: #006a16;
   --color-primary-dark: #003f86;
   --color-border: #dddddd;
   --color-surface: #f7f7f7;
@@ -67,6 +67,12 @@ header {
 footer {
   background-color: var(--color-surface);
 }
+
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
+}
+
 
 /* ===============================
    3. Общие элементы интерфейса 
@@ -390,4 +396,18 @@ section h2 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   font: inherit;
+.breadcrumbs {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+}
+
+.breadcrumbs span::before {
+  content: " / ";
+  color: var(--color-muted);
 }
