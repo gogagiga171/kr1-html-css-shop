@@ -391,11 +391,13 @@ section h2 {
 }
 
 .filters-form input[type="number"] {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font: inherit;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font: inherit;
+}
+
 .breadcrumbs {
   max-width: var(--container-width);
   margin: 0 auto var(--space-md);
