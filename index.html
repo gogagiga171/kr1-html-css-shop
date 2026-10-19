@@ -20,8 +20,28 @@
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+              <a
+                class="site-nav__link"
+                href="catalog.html"
+                aria-current="page"
+              >
+                Каталог <span class="dropdown-arrow">▾</span>
+              </a>
+
+              <ul class="dropdown-menu">
+                <li><a href="catalog.html?category=electronics">Техника</a></li>
+                <li><a href="catalog.html?category=clothing">Одежда</a></li>
+                <li><a href="catalog.html?category=jewelry">Украшения</a></li>
+                <li><a href="catalog.html?category=home">Товары для дома</a></li>
+                <li><a href="catalog.html?category=beauty">Красота и уход</a></li>
+                <li><a href="catalog.html?category=sport">Спорт и отдых</a></li>
+                <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                <li><a href="catalog.html?category=all">Все товары</a></li>
+              </ul>
+            </li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="faq.html">FAQ</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>

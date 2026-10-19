@@ -273,6 +273,88 @@ a:focus-visible {
   font-weight: bold;
 }
 
+
+/* Вариант 1: карточка со скидкой */
+.product-card--sale {
+  border-color: var(--color-danger);
+  background-color: #fffafa;
+}
+
+.product-card--sale .product-card__badge {
+  background-color: var(--color-danger);
+}
+
+/* Старая цена */
+.product-card__old-price {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* Вариант 2: новая модель */
+.product-card--new {
+  border-color: var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+.product-card--new .product-card__badge {
+  background-color: var(--color-success);
+}
+
+/* Вариант 3: рекомендуемый товар */
+.product-card--recommended {
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 4px 14px rgba(0, 119, 27, 0.12);
+}
+
+.product-card--recommended .product-card__title {
+  color: var(--color-primary-dark);
+}
+
+/* Вариант 4: компактная карточка */
+.product-card--compact {
+  padding: var(--space-sm);
+  gap: var(--space-xs);
+}
+
+.product-card--compact .product-card__img {
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.product-card--compact .product-card__description {
+  font-size: 14px;
+}
+
+/* Вариант 5: карточка без изображения */
+.product-card--no-image .product-card__img {
+  display: none;
+}
+
+/* Вариант 6: карточка с приглушённым оформлением */
+.product-card--muted {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.product-card--muted .product-card__description {
+  color: var(--color-muted);
+}
+
+/* Общий эффект наведения */
+.product-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
 /* margin-top: auto прижимает кнопку к низу карточки */
 .product-card__button {
   margin-top: auto;
@@ -481,4 +563,93 @@ a:focus-visible {
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
+}
+
+
+/* Родительский пункт меню */
+.site-nav__item--dropdown {
+  position: relative;
+}
+
+/* Стрелка */
+.dropdown-arrow {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+
+  min-width: 220px;
+  margin: 0;
+  padding: 8px 0;
+
+  list-style: none;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+}
+
+/* Ссылки подкатегорий */
+.dropdown-menu a {
+  display: block;
+  padding: 11px 16px;
+  color: #222;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+/* Открытие при наведении и фокусе с клавиатуры */
+.site-nav__item--dropdown:hover > .dropdown-menu,
+.site-nav__item--dropdown:focus-within > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.site-nav__item--dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    display: none;
+    min-width: 0;
+    margin: 4px 0 8px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: #f8fafc;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .site-nav__item--dropdown:hover > .dropdown-menu,
+  .site-nav__item--dropdown:focus-within > .dropdown-menu {
+    display: block;
+  }
 }

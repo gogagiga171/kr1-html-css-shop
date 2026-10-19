@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ответы на часто задаваемые вопросы об оплате, доставке, возврате и работе интернет-магазина ShopProject.">
+
+  <title>Помощь и FAQ — ShopProject</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Помощь и FAQ — ShopProject">
+  <meta property="og:description" content="Ответы на популярные вопросы покупателей.">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Страница FAQ */
+
+    .faq-search {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .faq-search__input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font: inherit;
+    }
+
+    .faq-search__input:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .faq-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
+
+    .faq-category {
+      padding: 8px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-white);
+      color: var(--color-text);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .faq-category:hover,
+    .faq-category[aria-pressed="true"] {
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .faq-item {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-bg);
+      overflow: hidden;
+    }
+
+    .faq-item[hidden] {
+      display: none;
+    }
+
+    .faq-item__question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      width: 100%;
+      padding: var(--space-md);
+      border: 0;
+      background: transparent;
+      color: var(--color-text);
+      text-align: left;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .faq-item__question:hover {
+      color: var(--color-primary);
+    }
+
+    .faq-item__question:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -3px;
+    }
+
+    .faq-item__icon {
+      flex-shrink: 0;
+      color: var(--color-primary);
+      font-size: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item__question[aria-expanded="true"] .faq-item__icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-item__answer {
+      padding: 0 var(--space-md) var(--space-md);
+      color: var(--color-muted);
+    }
+
+    .faq-item__answer p {
+      margin: 0;
+    }
+
+    .faq-empty {
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      text-align: center;
+    }
+
+    .faq-contact {
+      margin-top: var(--space-xl);
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-accent);
+    }
+
+    .faq-contact h2 {
+      margin-top: 0;
+    }
+
+    @media (max-width: 600px) {
+      .faq-search {
+        flex-direction: column;
+      }
+
+      .faq-search .button {
+        width: 100%;
+      }
+
+      .faq-category {
+        flex: 1 1 auto;
+      }
+    }
+  </style>
+
+  <script src="js/faq.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header" id="top">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+
+          <li class="site-nav__item site-nav__item--dropdown">
+            <a class="site-nav__link" href="catalog.html">
+              Каталог <span class="dropdown-arrow">▾</span>
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a href="catalog.html?category=electronics">Техника</a></li>
+              <li><a href="catalog.html?category=clothing">Одежда</a></li>
+              <li><a href="catalog.html?category=jewelry">Украшения</a></li>
+              <li><a href="catalog.html?category=home">Товары для дома</a></li>
+              <li><a href="catalog.html?category=beauty">Красота и уход</a></li>
+              <li><a href="catalog.html?category=sport">Спорт и отдых</a></li>
+              <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+              <li><a href="catalog.html?category=all">Все товары</a></li>
+            </ul>
+          </li>
+
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
+
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active"
+               href="faq.html" aria-current="page">Помощь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Помощь и FAQ</span>
+    </nav>
+
+    <section class="hero">
+      <h1>Помощь и часто задаваемые вопросы</h1>
+      <p>
+        Здесь собраны ответы на вопросы о заказах, оплате, доставке
+        и возврате товаров.
+      </p>
+
+      <form class="faq-search" id="faq-search" role="search">
+        <input
+          class="faq-search__input"
+          id="faq-search-input"
+          type="search"
+          placeholder="Например, как оформить заказ?"
+          aria-label="Поиск по вопросам"
+        >
+        <button class="button button--primary" type="submit">
+          Найти
+        </button>
+      </form>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <h2 class="section__title" id="faq-title">Чем мы можем помочь?</h2>
+
+      <div class="faq-categories" aria-label="Категории вопросов">
+        <button class="faq-category" type="button"
+                data-category="all" aria-pressed="true">
+          Все вопросы
+        </button>
+        <button class="faq-category" type="button"
+                data-category="orders" aria-pressed="false">
+          Заказы
+        </button>
+        <button class="faq-category" type="button"
+                data-category="payment" aria-pressed="false">
+          Оплата
+        </button>
+        <button class="faq-category" type="button"
+                data-category="delivery" aria-pressed="false">
+          Доставка
+        </button>
+        <button class="faq-category" type="button"
+                data-category="returns" aria-pressed="false">
+          Возврат
+        </button>
+      </div>
+
+      <div class="faq-list" id="faq-list">
+        <article class="faq-item" data-category="orders">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Как оформить заказ?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              Выберите товары в каталоге и следуйте инструкциям
+              на странице оформления заказа. В текущей учебной версии
+              магазина полноценное оформление заказа может быть не реализовано.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item" data-category="orders">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Как узнать статус заказа?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              В демонстрационной версии отслеживание заказов пока не подключено.
+              В полноценном магазине статус заказа можно было бы уточнять
+              в личном кабинете или через службу поддержки.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item" data-category="payment">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Какие способы оплаты доступны?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              Доступные способы оплаты зависят от реализации магазина.
+              В текущем учебном проекте платёжная система не подключена,
+              поэтому реальные платежи не принимаются.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item" data-category="delivery">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Сколько времени занимает доставка?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              Сроки доставки зависят от региона и выбранного способа отправки.
+              Для учебного проекта реальные службы доставки пока не подключены.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item" data-category="delivery">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Можно ли изменить адрес доставки?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              В работающем магазине изменение адреса обычно возможно до передачи
+              заказа службе доставки. В учебной версии такая функция пока
+              не реализована.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item" data-category="returns">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Можно ли вернуть товар?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              Условия возврата зависят от вида товара и применимого
+              законодательства. Перед покупкой следует ознакомиться
+              с правилами возврата продавца.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item" data-category="returns">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Что делать, если товар повреждён?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              Сохраните упаковку и документы о покупке, зафиксируйте
+              повреждения и обратитесь к продавцу для уточнения дальнейших
+              действий. Конкретная процедура зависит от правил магазина.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item" data-category="orders">
+          <h3>
+            <button class="faq-item__question" type="button"
+                    aria-expanded="false">
+              Как связаться с магазином?
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" hidden>
+            <p>
+              Перейдите на страницу
+              <a href="contacts.html">«Контакты»</a>
+              или воспользуйтесь формой обратной связи на главной странице.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <p class="faq-empty" id="faq-empty" hidden>
+        По вашему запросу ничего не найдено. Попробуйте изменить поисковую фразу.
+      </p>
+    </section>
+
+    <section class="faq-contact" aria-labelledby="faq-contact-title">
+      <h2 id="faq-contact-title">Не нашли ответ?</h2>
+      <p>
+        Если нужной информации нет в списке вопросов, перейдите
+        на страницу контактов.
+      </p>
+      <a class="button button--primary" href="contacts.html">
+        Связаться с нами
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">
+        &copy; 2026 Учебный проект. Все права защищены.
+      </p>
+      <p class="site-footer__text">
+        Дисциплина: Фронтенд и бэкенд разработка
+      </p>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top">Наверх</a>
+</body>
+</html>
