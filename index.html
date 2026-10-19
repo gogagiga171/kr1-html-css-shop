@@ -10,7 +10,8 @@
   <meta property="og:description" content="Учебный frontend-проект интернет-магазина: популярные товары, преимущества и форма заявки.">
 
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js" defer></script>
+  <script src="js/products.js" defer></script>
+  <script src="js/order-form.js" defer></script>
 </head>
 <body>
   <header class="site-header" id="top">
@@ -155,6 +156,22 @@
   <a class="to-top" href="#top">Наверх</a>
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
     <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+
+    <div class="order-product" id="order-product" hidden>
+      <img
+        class="order-product__image"
+        id="order-product-image"
+        src=""
+        alt=""
+        width="100"
+        height="100"
+      >
+
+      <div class="order-product__info">
+        <h3 class="order-product__title" id="order-product-title"></h3>
+        <p class="order-product__price" id="order-product-price"></p>
+      </div>
+    </div>
 
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
       <input id="selected-product" name="selected-product" type="hidden">
