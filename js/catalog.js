@@ -113,7 +113,7 @@ function renderProducts() {
     
           <img
             class="product-card__img"
-            src="images/${product.image}"
+            src="${product.image}"
             alt="${product.name}"
             width="400"
             height="300"

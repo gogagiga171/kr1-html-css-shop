@@ -1,140 +1,143 @@
 const products = [
   {
-    name: "Смартфон",
+    name: "Беспроводные наушники",
     category: "electronics",
-    description: "Современный смартфон для повседневных задач.",
-    price: 25000,
-    image: "product-1.svg",
-    popular: true,
-    isNew: true
+    description: "Наушники для музыки и повседневного использования",
+    price: 2990,
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"
   },
   {
-    name: "Наушники",
+    name: "Смарт-часы",
     category: "electronics",
-    description: "Беспроводные наушники с чистым звуком.",
-    price: 4500,
-    image: "product-2.svg",
-    popular: true
+    description: "Умные часы для повседневных задач",
+    price: 5990,
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"
+  },
+  {
+    name: "Фотоаппарат",
+    category: "electronics",
+    description: "Компактный фотоаппарат для путешествий",
+    price: 12990,
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600"
   },
   {
     name: "Ноутбук",
     category: "electronics",
-    description: "Ноутбук для работы и учёбы.",
-    price: 65000,
-    image: "product-3.svg",
-    isNew: true
+    description: "Ноутбук для работы и учёбы",
+    price: 54990,
+    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600"
+  },
+  {
+    name: "Игровая клавиатура",
+    category: "electronics",
+    description: "Клавиатура для игр и работы",
+    price: 3990,
+    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600"
+  },
+  {
+    name: "Кроссовки",
+    category: "sport",
+    description: "Удобные кроссовки для активного образа жизни",
+    price: 4990,
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"
+  },
+  {
+    name: "Спортивная сумка",
+    category: "sport",
+    description: "Вместительная сумка для тренировок",
+    price: 2490,
+    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600"
   },
   {
     name: "Футболка",
     category: "clothing",
-    description: "Удобная хлопковая футболка.",
-    price: 1200,
-    image: "product-1.svg",
-    popular: true
+    description: "Базовая футболка на каждый день",
+    price: 1290,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"
   },
   {
-    name: "Куртка",
+    name: "Джинсовая куртка",
     category: "clothing",
-    description: "Практичная куртка на каждый день.",
-    price: 5500,
-    image: "product-2.svg",
-    isNew: true
+    description: "Классическая куртка из денима",
+    price: 4590,
+    image: "https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=600"
   },
   {
-    name: "Кроссовки",
-    category: "clothing",
-    description: "Комфортная обувь для прогулок.",
-    price: 4200,
-    image: "product-3.svg"
-  },
-  {
-    name: "Кольцо",
-    category: "jewelry",
-    description: "Элегантное украшение для любого образа.",
-    price: 1800,
-    image: "product-1.svg",
-    popular: true
-  },
-  {
-    name: "Браслет",
-    category: "jewelry",
-    description: "Стильный браслет на каждый день.",
-    price: 950,
-    image: "product-2.svg"
-  },
-  {
-    name: "Серьги",
-    category: "jewelry",
-    description: "Лаконичные серьги для любого случая.",
-    price: 1400,
-    image: "product-3.svg",
-    isNew: true
-  },
-  {
-    name: "Настольная лампа",
-    category: "home",
-    description: "Лампа для уютного рабочего места.",
-    price: 2100,
-    image: "product-1.svg",
-    popular: true
-  },
-  {
-    name: "Подушка",
-    category: "home",
-    description: "Мягкая декоративная подушка.",
-    price: 800,
-    image: "product-2.svg"
-  },
-  {
-    name: "Чайник",
-    category: "home",
-    description: "Электрический чайник для кухни.",
-    price: 1900,
-    image: "product-3.svg",
-    isNew: true
-  },
-  {
-    name: "Крем для лица",
-    category: "beauty",
-    description: "Уход за кожей на каждый день.",
-    price: 900,
-    image: "product-1.svg"
-  },
-  {
-    name: "Шампунь",
-    category: "beauty",
-    description: "Средство для ухода за волосами.",
-    price: 550,
-    image: "product-2.svg"
-  },
-  {
-    name: "Спортивная бутылка",
-    category: "sport",
-    description: "Бутылка для тренировок и прогулок.",
-    price: 700,
-    image: "product-1.svg"
-  },
-  {
-    name: "Фитнес-коврик",
-    category: "sport",
-    description: "Коврик для домашних тренировок.",
-    price: 1600,
-    image: "product-2.svg"
-  },
-  {
-    name: "Рюкзак",
+    name: "Сумка через плечо",
     category: "accessories",
-    description: "Практичный рюкзак для города.",
-    price: 2800,
-    image: "product-1.svg",
-    popular: true
+    description: "Компактная сумка для необходимых вещей",
+    price: 2590,
+    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600"
+  },
+  {
+    name: "Солнцезащитные очки",
+    category: "accessories",
+    description: "Универсальные очки для солнечной погоды",
+    price: 1990,
+    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600"
   },
   {
     name: "Наручные часы",
     category: "accessories",
-    description: "Стильные часы на каждый день.",
-    price: 3500,
-    image: "product-2.svg"
+    description: "Минималистичные часы с классическим дизайном",
+    price: 3490,
+    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600"
+  },
+  {
+    name: "Кольцо",
+    category: "jewelry",
+    description: "Лаконичное украшение на каждый день",
+    price: 1790,
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600"
+  },
+  {
+    name: "Серьги",
+    category: "jewelry",
+    description: "Изящные серьги для повседневного образа",
+    price: 1490,
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600"
+  },
+  {
+    name: "Косметика для ухода",
+    category: "beauty",
+    description: "Средства для ежедневного ухода за кожей",
+    price: 1490,
+    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600"
+  },
+  {
+    name: "Парфюм",
+    category: "beauty",
+    description: "Парфюм для повседневного использования",
+    price: 3990,
+    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=600"
+  },
+  {
+    name: "Керамическая кружка",
+    category: "home",
+    description: "Кружка для чая и кофе",
+    price: 590,
+    image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600"
+  },
+  {
+    name: "Настольная лампа",
+    category: "home",
+    description: "Лампа для рабочего стола",
+    price: 2290,
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600"
+  },
+  {
+    name: "Рюкзак",
+    category: "accessories",
+    description: "Практичный рюкзак для учёбы и путешествий",
+    price: 3290,
+    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600"
+  },
+  {
+    name: "Бутылка для воды",
+    category: "sport",
+    description: "Многоразовая бутылка для тренировок и прогулок",
+    price: 790,
+    image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600"
   }
 ];
 

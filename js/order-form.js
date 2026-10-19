@@ -34,7 +34,7 @@ if (orderDialog && orderForm && selectedProductInput) {
     previewTitle.textContent = name;
 
     if (selectedProductData) {
-      previewImage.src = `images/${selectedProductData.image}`;
+      previewImage.src = `${selectedProductData.image}`;
       previewImage.alt = selectedProductData.name;
       previewImage.hidden = false;
 

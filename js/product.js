@@ -29,7 +29,7 @@ if (!product) {
       <div class="product-detail__image-wrapper">
         <img
           class="product-detail__image"
-          src="images/${product.image}"
+          src="${product.image}"
           alt="${product.name}"
           width="400"
           height="300"
