@@ -5,7 +5,7 @@ const products = [
     category: "power",
     description: "Мощная ударная дрель 850 Вт для сверления бетона, металла и дерева",
     price: 8490,
-    image: "https://cdn.vseinstrumenti.ru/images/goods/stroitelnyj-instrument/dreli-elektricheskie/60563/560x504/52589790.jpg"
+    image: "https://worcraft.com.ua/files/resized/products/id-500-web-2_1.800x850.jpg.webp"
   },
   {
     name: "Угловая шлифмашина Industrial 125",

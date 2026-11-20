@@ -7,10 +7,10 @@ if (!product) {
   detail.innerHTML = '<div class="empty-state"><h1>ТОВАР НЕ НАЙДЕН</h1><p>Проверьте ссылку или вернитесь в каталог.</p><a class="button button--primary" href="catalog.html">В КАТАЛОГ</a></div>';
   reviewsSection.hidden = true;
 } else {
-  document.title = `${product.name} — ShopProject`;
+  document.title = `${product.name} — Instrumental`;
   breadcrumb.textContent = product.name;
-  detail.innerHTML = `<div class="product-detail__layout"><div class="product-detail__image-wrapper"><img class="product-detail__image" src="${product.image}" alt="${product.name}"></div><div class="product-detail__info"><p class="eyebrow">SHOPPROJECT / ITEM DETAILS</p><h1>${product.name}</h1><p class="product-detail__description">${product.description}</p><p class="product-detail__category">Категория: ${categories[product.category]}</p><p class="product-card__price">${product.price.toLocaleString("ru-RU")} ₽</p><button class="button button--primary product-detail__order-button product-card__button" type="button" data-product="${product.name}" data-price="${product.price.toLocaleString("ru-RU")} ₽" data-image="${product.image}">ОФОРМИТЬ ЗАЯВКУ ↗</button><a class="text-link" href="catalog.html">← ВЕРНУТЬСЯ В КАТАЛОГ</a></div></div>`;
-  const key = `shopproject-reviews-${encodeURIComponent(product.name)}`;
+  detail.innerHTML = `<div class="product-detail__layout"><div class="product-detail__image-wrapper"><img class="product-detail__image" src="${product.image}" alt="${product.name}"></div><div class="product-detail__info"><p class="eyebrow">INSTRUMENTAL / ITEM DETAILS</p><h1>${product.name}</h1><p class="product-detail__description">${product.description}</p><p class="product-detail__category">Категория: ${categories[product.category]}</p><p class="product-card__price">${product.price.toLocaleString("ru-RU")} ₽</p><button class="button button--primary product-detail__order-button product-card__button" type="button" data-product="${product.name}" data-price="${product.price.toLocaleString("ru-RU")} ₽" data-image="${product.image}">ОФОРМИТЬ ЗАЯВКУ ↗</button><a class="text-link" href="catalog.html">← ВЕРНУТЬСЯ В КАТАЛОГ</a></div></div>`;
+  const key = `instrumental-reviews-${encodeURIComponent(product.name)}`;
   const form = document.querySelector("#review-form"), list = document.querySelector("#reviews-list"), summary = document.querySelector("#reviews-summary"), message = document.querySelector("#review-message");
   const getReviews = () => { try { const value = JSON.parse(localStorage.getItem(key) || "[]"); return Array.isArray(value) ? value : []; } catch { return []; } };
   function renderReviews() {
