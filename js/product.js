@@ -1,178 +1,24 @@
-const params = new URLSearchParams(window.location.search);
-const productName = params.get("name");
-
-const product = products.find(item => item.name === productName);
-
+const params = new URLSearchParams(location.search);
+const product = products.find(item => item.name === params.get("name"));
 const detail = document.querySelector("#product-detail");
 const breadcrumb = document.querySelector("#product-breadcrumb");
-const reviewsList = document.querySelector("#reviews-list");
-const reviewsSummary = document.querySelector("#reviews-summary");
-const reviewForm = document.querySelector("#review-form");
-const reviewMessage = document.querySelector("#review-message");
-
+const reviewsSection = document.querySelector("#reviews");
 if (!product) {
-  detail.innerHTML = `
-    <h1>Товар не найден</h1>
-    <p>Возможно, товар был удалён или ссылка неверна.</p>
-    <a class="button button--primary" href="catalog.html">
-      Вернуться в каталог
-    </a>
-  `;
-
-  document.querySelector("#reviews").hidden = true;
+  detail.innerHTML = '<div class="empty-state"><h1>ТОВАР НЕ НАЙДЕН</h1><p>Проверьте ссылку или вернитесь в каталог.</p><a class="button button--primary" href="catalog.html">В КАТАЛОГ</a></div>';
+  reviewsSection.hidden = true;
 } else {
   document.title = `${product.name} — ShopProject`;
   breadcrumb.textContent = product.name;
-
-  detail.innerHTML = `
-    <div class="product-detail__layout">
-      <div class="product-detail__image-wrapper">
-        <img
-          class="product-detail__image"
-          src="${product.image}"
-          alt="${product.name}"
-          width="400"
-          height="300"
-        >
-      </div>
-
-      <div class="product-detail__info">
-        <h1>${product.name}</h1>
-
-        <p class="product-detail__description">
-          ${product.description}
-        </p>
-
-        <p class="product-detail__category">
-          Категория: ${categories[product.category] || "Товары"}
-        </p>
-
-        <p class="product-card__price">
-          Цена: ${product.price.toLocaleString("ru-RU")} руб.
-        </p>
-        
-        <button
-          class="button button--primary product-detail__order-button"
-          id="open-order-dialog"
-          type="button"
-        >
-          Оформить заявку
-        </button>
-
-        ${product.popular
-          ? '<span class="product-card__badge">Хит</span>'
-          : ""}
-
-        ${product.isNew
-          ? '<span class="product-card__badge">Новинка</span>'
-          : ""}
-
-        <a class="button button--secondary" href="catalog.html">
-          Вернуться в каталог
-        </a>
-      </div>
-    </div>
-  `;
-
-  const storageKey =
-    `shopproject-reviews-${encodeURIComponent(product.name)}`;
-
-  function getReviews() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
-      return Array.isArray(saved) ? saved : [];
-    } catch {
-      return [];
-    }
-  }
-
+  detail.innerHTML = `<div class="product-detail__layout"><div class="product-detail__image-wrapper"><img class="product-detail__image" src="${product.image}" alt="${product.name}"></div><div class="product-detail__info"><p class="eyebrow">SHOPPROJECT / ITEM DETAILS</p><h1>${product.name}</h1><p class="product-detail__description">${product.description}</p><p class="product-detail__category">Категория: ${categories[product.category]}</p><p class="product-card__price">${product.price.toLocaleString("ru-RU")} ₽</p><button class="button button--primary product-detail__order-button product-card__button" type="button" data-product="${product.name}" data-price="${product.price.toLocaleString("ru-RU")} ₽" data-image="${product.image}">ОФОРМИТЬ ЗАЯВКУ ↗</button><a class="text-link" href="catalog.html">← ВЕРНУТЬСЯ В КАТАЛОГ</a></div></div>`;
+  const key = `shopproject-reviews-${encodeURIComponent(product.name)}`;
+  const form = document.querySelector("#review-form"), list = document.querySelector("#reviews-list"), summary = document.querySelector("#reviews-summary"), message = document.querySelector("#review-message");
+  const getReviews = () => { try { const value = JSON.parse(localStorage.getItem(key) || "[]"); return Array.isArray(value) ? value : []; } catch { return []; } };
   function renderReviews() {
     const reviews = getReviews();
-
-    if (reviews.length === 0) {
-      reviewsSummary.textContent = "Пока нет отзывов. Будьте первым!";
-      reviewsList.replaceChildren();
-      return;
-    }
-
-    const average =
-      reviews.reduce((sum, review) => sum + review.rating, 0) /
-      reviews.length;
-
-    reviewsSummary.textContent =
-      `Средняя оценка: ${average.toFixed(1)} из 5 · ` +
-      `Отзывов: ${reviews.length}`;
-
-    reviewsList.replaceChildren();
-
-    reviews.slice().reverse().forEach(review => {
-      const article = document.createElement("article");
-      article.className = "review-card";
-
-      const title = document.createElement("h4");
-      title.className = "review-card__author";
-      title.textContent = review.author;
-
-      const rating = document.createElement("p");
-      rating.className = "review-card__rating";
-      rating.textContent = `Оценка: ${review.rating} из 5`;
-
-      const text = document.createElement("p");
-      text.className = "review-card__text";
-      text.textContent = review.text;
-
-      const date = document.createElement("time");
-      date.className = "review-card__date";
-      date.dateTime = review.date;
-      date.textContent = new Date(review.date).toLocaleDateString("ru-RU");
-
-      article.append(title, rating, text, date);
-      reviewsList.append(article);
-    });
+    summary.textContent = reviews.length ? `Средняя оценка: ${(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)} из 5 · Отзывов: ${reviews.length}` : "Пока нет отзывов. Будьте первым!";
+    list.replaceChildren();
+    reviews.slice().reverse().forEach(r => { const card = document.createElement("article"); card.className = "review-card"; const title = document.createElement("h4"); title.textContent = r.author; const rating = document.createElement("p"); rating.className = "review-card__rating"; rating.textContent = `Оценка: ${r.rating} из 5`; const body = document.createElement("p"); body.textContent = r.text; const date = document.createElement("time"); date.textContent = new Date(r.date).toLocaleDateString("ru-RU"); card.append(title, rating, body, date); list.append(card); });
   }
-
-  reviewForm.addEventListener("submit", event => {
-    event.preventDefault();
-
-    const formData = new FormData(reviewForm);
-    const author = String(formData.get("author") || "").trim();
-    const text = String(formData.get("text") || "").trim();
-    const rating = Number(formData.get("rating"));
-
-    if (
-      !author ||
-      !text ||
-      author.length > 60 ||
-      text.length > 1000 ||
-      !Number.isInteger(rating) ||
-      rating < 1 ||
-      rating > 5
-    ) {
-      reviewMessage.textContent = "Проверьте заполнение формы.";
-      return;
-    }
-
-    const reviews = getReviews();
-
-    reviews.push({
-      author,
-      text,
-      rating,
-      date: new Date().toISOString()
-    });
-
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(reviews));
-    } catch {
-      reviewMessage.textContent =
-        "Не удалось сохранить отзыв. Проверьте настройки хранилища браузера.";
-      return;
-    }
-
-    reviewForm.reset();
-    reviewMessage.textContent = "Отзыв добавлен.";
-    renderReviews();
-  });
-
+  form.addEventListener("submit", e => { e.preventDefault(); const data = new FormData(form); const author = String(data.get("author") || "").trim(), text = String(data.get("text") || "").trim(), rating = Number(data.get("rating")); if (!author || !text || !Number.isInteger(rating) || rating < 1 || rating > 5) { message.textContent = "Проверьте заполнение формы."; return; } const reviews = getReviews(); reviews.push({author, text, rating, date: new Date().toISOString()}); try { localStorage.setItem(key, JSON.stringify(reviews)); form.reset(); message.textContent = "Отзыв сохранён в этом браузере."; renderReviews(); } catch { message.textContent = "Не удалось сохранить отзыв в браузере."; } });
   renderReviews();
 }

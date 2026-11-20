@@ -1,222 +1,20 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ответы на часто задаваемые вопросы об оплате, доставке, возврате и работе интернет-магазина ShopProject.">
-
-  <title>Помощь и FAQ — ShopProject</title>
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Помощь и FAQ — ShopProject">
-  <meta property="og:description" content="Ответы на популярные вопросы покупателей.">
-
-  <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    /* Страница FAQ */
-
-    .faq-search {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-lg);
-    }
-
-    .faq-search__input {
-      flex: 1;
-      min-width: 0;
-      padding: 12px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      font: inherit;
-    }
-
-    .faq-search__input:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    .faq-categories {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin: var(--space-lg) 0;
-    }
-
-    .faq-category {
-      padding: 8px 14px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      background: var(--color-white);
-      color: var(--color-text);
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .faq-category:hover,
-    .faq-category[aria-pressed="true"] {
-      border-color: var(--color-primary);
-      background: var(--color-primary);
-      color: var(--color-white);
-    }
-
-    .faq-list {
-      display: grid;
-      gap: var(--space-md);
-    }
-
-    .faq-item {
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      background: var(--color-bg);
-      overflow: hidden;
-    }
-
-    .faq-item[hidden] {
-      display: none;
-    }
-
-    .faq-item__question {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--space-md);
-      width: 100%;
-      padding: var(--space-md);
-      border: 0;
-      background: transparent;
-      color: var(--color-text);
-      text-align: left;
-      font: inherit;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .faq-item__question:hover {
-      color: var(--color-primary);
-    }
-
-    .faq-item__question:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: -3px;
-    }
-
-    .faq-item__icon {
-      flex-shrink: 0;
-      color: var(--color-primary);
-      font-size: 20px;
-      transition: transform 0.2s ease;
-    }
-
-    .faq-item__question[aria-expanded="true"] .faq-item__icon {
-      transform: rotate(45deg);
-    }
-
-    .faq-item__answer {
-      padding: 0 var(--space-md) var(--space-md);
-      color: var(--color-muted);
-    }
-
-    .faq-item__answer p {
-      margin: 0;
-    }
-
-    .faq-empty {
-      padding: var(--space-lg);
-      border-radius: var(--radius-md);
-      background: var(--color-surface);
-      text-align: center;
-    }
-
-    .faq-contact {
-      margin-top: var(--space-xl);
-      padding: var(--space-lg);
-      border-radius: var(--radius-lg);
-      background: var(--color-surface-accent);
-    }
-
-    .faq-contact h2 {
-      margin-top: 0;
-    }
-
-    @media (max-width: 600px) {
-      .faq-search {
-        flex-direction: column;
-      }
-
-      .faq-search .button {
-        width: 100%;
-      }
-
-      .faq-category {
-        flex: 1 1 auto;
-      }
-    }
-  </style>
-
-  <script src="js/faq.js" defer></script>
-</head>
-
-<body>
-  <header class="site-header" id="top">
-    <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
-
-      <nav class="site-nav" aria-label="Основная навигация">
-        <ul class="site-nav__list">
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html">Главная</a>
-          </li>
-
-          <li class="site-nav__item site-nav__item--dropdown">
-            <a class="site-nav__link" href="catalog.html">
-              Каталог <span class="dropdown-arrow">▾</span>
-            </a>
-
-            <ul class="dropdown-menu">
-              <li><a href="catalog.html?category=electronics">Техника</a></li>
-              <li><a href="catalog.html?category=clothing">Одежда</a></li>
-              <li><a href="catalog.html?category=jewelry">Украшения</a></li>
-              <li><a href="catalog.html?category=home">Товары для дома</a></li>
-              <li><a href="catalog.html?category=beauty">Красота и уход</a></li>
-              <li><a href="catalog.html?category=sport">Спорт и отдых</a></li>
-              <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
-              <li><a href="catalog.html?category=all">Все товары</a></li>
-            </ul>
-          </li>
-
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="contacts.html">Контакты</a>
-          </li>
-
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
-          </li>
-
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
-          </li>
-
-          <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
-          </li>
-
-          <li class="site-nav__item">
-            <a class="site-nav__link site-nav__link--active"
-               href="faq.html" aria-current="page">Помощь</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main class="page-content">
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#171a1b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><meta name="description" content="Ответы на частые вопросы об учебном магазине ShopProject."><title>Помощь и FAQ — ShopProject</title><script src="js/faq.js" defer></script></head><body><div class="topbar"><span>МАСТЕРСКАЯ НАЧИНАЕТСЯ С ПРАВИЛЬНОГО ИНСТРУМЕНТА</span></div>
+<header class="site-header" id="top"><div class="container site-header__inner">
+<a class="site-logo" href="index.html">SHOP<span>PROJECT</span><i>.</i></a>
+<nav class="site-nav" aria-label="Основная навигация"><ul class="site-nav__list">
+<li><a class="site-nav__link " href="index.html">Главная</a></li>
+<li class="site-nav__item--dropdown"><a class="site-nav__link " href="catalog.html">Каталог <span class="dropdown-arrow">▾</span></a>
+<ul class="dropdown-menu"><li><a href="catalog.html?category=power">Электроинструменты</a></li><li><a href="catalog.html?category=hand">Ручные инструменты</a></li><li><a href="catalog.html?category=equipment">Оборудование</a></li><li><a href="catalog.html?category=accessories">Аксессуары</a></li><li><a href="catalog.html">Все товары</a></li></ul></li>
+<li><a class="site-nav__link " href="contacts.html">Контакты</a></li><li><a class="site-nav__link site-nav__link--active" href="faq.html">FAQ</a></li></ul></nav>
+<a class="header-cta" href="catalog.html">ВЫБРАТЬ ТОВАР <span>↗</span></a></div></header>
+<main class="page-content">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
       <span class="breadcrumbs__current">Помощь и FAQ</span>
     </nav>
 
-    <section class="hero">
+    <section class="page-intro faq-intro">
       <h1>Помощь и часто задаваемые вопросы</h1>
       <p>
         Здесь собраны ответы на вопросы о заказах, оплате, доставке
@@ -416,18 +214,9 @@
       </a>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p class="site-footer__text">
-        &copy; 2026 Учебный проект. Все права защищены.
-      </p>
-      <p class="site-footer__text">
-        Дисциплина: Фронтенд и бэкенд разработка
-      </p>
-    </div>
-  </footer>
-
-  <a class="to-top" href="#top">Наверх</a>
-</body>
-</html>
+<footer class="site-footer"><div class="container"><div class="site-footer__main">
+<div><a class="site-logo" href="index.html">SHOP<span>PROJECT</span><i>.</i></a><p class="site-footer__about">УЧЕБНЫЙ FRONTEND-ПРОЕКТ.<br>ФУНКЦИОНАЛЬНОСТЬ И ФОРМА.</p></div>
+<div><h3>НАВИГАЦИЯ</h3><a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="contacts.html">Контакты</a></div>
+<div><h3>РАЗДЕЛЫ</h3><a href="faq.html">FAQ</a><a href="index.html#advantages">Преимущества</a><a href="index.html#popular">Популярные товары</a></div>
+<div><h3>УЧЕБНЫЙ ПРОЕКТ</h3><p>Дисциплина: Фронтенд и бэкенд разработка</p><p>© 2026 ShopProject</p></div></div>
+<div class="site-footer__bottom"><span>© 2026 SHOPPROJECT. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span><a href="#top">НАВЕРХ ↑</a></div></div></footer><a class="to-top" href="#top" aria-label="Вернуться наверх">↑</a></body></html>

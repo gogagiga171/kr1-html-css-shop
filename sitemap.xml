@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://gogagiga171.github.io/kr1-html-css-shop/</loc>
-  </url>
-  <url>
-    <loc>https://gogagiga171.github.io/kr1-html-css-shop/catalog.html</loc>
-  </url>
-  <url>
-    <loc>https://gogagiga171.github.io/kr1-html-css-shop/contacts.html</loc>
-  </url>
+<url><loc>index.html</loc></url><url><loc>catalog.html</loc></url><url><loc>contacts.html</loc></url><url><loc>faq.html</loc></url>
 </urlset>
