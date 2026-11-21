@@ -1,19 +1,35 @@
 (() => {
-  const button = document.querySelector('.to-top');
-  const topbar = document.getElementById('topbar');
-  if (!button || !topbar) return;
+    const button = document.querySelector('.to-top');
+    const topbar = document.getElementById('topbar');
 
-  const updateVisibility = () => {
-    // Hide while the topbar is visible; show only after scrolling past it.
-    const topbarBottom = topbar.getBoundingClientRect().bottom;
-    button.hidden = topbarBottom >= 0;
-  };
+    if (!button || !topbar) return;
 
-  button.addEventListener('click', () => {
-    topbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+    const updateVisibility = () => {
+        button.hidden = window.scrollY <= topbar.offsetHeight;
+    };
 
-  window.addEventListener('scroll', updateVisibility, { passive: true });
-  window.addEventListener('resize', updateVisibility);
-  updateVisibility();
+    button.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    window.addEventListener('resize', updateVisibility);
+
+    updateVisibility();
 })();
+
+const footerTopLink = document.querySelector('.site-footer__bottom a[href="#topbar"]');
+
+if (footerTopLink) {
+    footerTopLink.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}

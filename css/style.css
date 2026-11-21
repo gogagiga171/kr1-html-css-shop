@@ -29,16 +29,28 @@ img { display: block; max-width: 100%; }
 [hidden] { display: none !important; }
 
 .topbar {
-  min-height: 34px;
-  display: grid;
-  place-items: center;
-  padding: 8px 16px;
-  color: #171717;
-  background: repeating-linear-gradient(135deg, #d65335 0 16px, #17191a 16px 32px);
-  font: 700 10px/1.4 "Roboto", sans-serif;
-  letter-spacing: 2px;
-  text-align: center;
+    min-height: 34px;
+    display: grid;
+    place-items: center;
+    padding: 8px 16px;
+    color: var(--bg);
+    background: repeating-linear-gradient(
+        135deg,
+        var(--accent) 0 16px,
+        var(--bg) 16px 32px
+    );
+    background-size: 45px 45px;
+    font: 700 10px/1.4 "Roboto", sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-position: var(--stripe-position, 0px) 0;
+    will-change: background-position;
 }
+
 .topbar span { padding: 3px 12px; background: var(--accent); }
 .site-header { background: #191c1d; border-bottom: 1px solid var(--border); }
 .site-header__inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
