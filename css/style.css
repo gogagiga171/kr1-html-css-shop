@@ -43,11 +43,33 @@ img { display: block; max-width: 100%; }
 .site-header { background: #191c1d; border-bottom: 1px solid var(--border); }
 .site-header__inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .site-logo { flex: 0 0 auto; display: inline-flex; align-items: center; color: var(--text); font: 700 27px/1 "Oswald", sans-serif; letter-spacing: 1.5px; }
-.site-logo__word { color: var(--text); }
-.site-logo:hover .site-logo__word { color: var(--accent); }
+.site-logo__word {
+    color: var(--text);
+    transition: color 0.3s ease;
+}
+
+.site-logo__accent {
+    color: var(--accent);
+    display: inline-block;
+    padding: 0 2px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.site-logo:hover .site-logo__word {
+    color: var(--accent);
+    transition: all 0.3s ease;
+}
+
+.site-logo:hover .site-logo__accent {
+    color: var(--bg);
+    -webkit-text-stroke: 1px var(--accent);
+    border-color: transparent;
+    transition: all 0.3s ease;
+}
 .site-nav__list { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; margin: 0; padding: 0; list-style: none; }
 .site-nav__link {
-  display: block; padding: 12px 10px; color: #c3c7c5;
+  display: block; padding: 12px 10px; color: var(--text);
   font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
   transition: color .2s, background .2s;
 }
