@@ -7,6 +7,9 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+    <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem("instrumental-theme") === "light" ? "light" : "dark"; } catch {}
+  </script>
   <link href="css/style.css" rel="stylesheet"/>
   <meta content="Каталог электроинструментов, ручного инструмента, оборудования и оснастки." name="description"/>
   <title>
@@ -16,11 +19,14 @@
   </script>
   <script defer="" src="js/catalog.js">
   </script>
+  
   <script defer="" src="js/order-form.js">
   </script>
   <script defer="" src="js/to-top.js">
   </script>
-     <script src="js/theme.js"></script>
+     
+   <script defer src="js/theme.js"></script>
+  <script defer src="js/favorites.js"></script>
  </head>
  <body>
   <div class="topbar" id="topbar">
@@ -372,6 +378,5 @@
   </p>
   <script src="js/topbar.js">
   </script>
- <script src="js/favorites.js"></script>
  </body>
 </html>

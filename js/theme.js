@@ -21,7 +21,7 @@
             const light = theme === "light";
             button.setAttribute("aria-label", light ? "Включить тёмную тему" : "Включить светлую тему");
             button.setAttribute("aria-pressed", String(light));
-            button.innerHTML = light ? "☾ <span>ТЁМНАЯ</span>" : "☼ <span>СВЕТЛАЯ</span>";
+            button.innerHTML = light ? '<span class="theme-toggle__symbol" aria-hidden="true">☾</span><span class="theme-toggle__label">ТЁМНАЯ</span>' : '<span class="theme-toggle__symbol" aria-hidden="true">☀</span><span class="theme-toggle__label">СВЕТЛАЯ</span>';
         }
     }
 
@@ -36,12 +36,13 @@
         tools.className = "header-tools";
         tools.innerHTML = `
             <a class="header-favorites" href="favorites.html" aria-label="Избранное">
-                <span aria-hidden="true">♡</span>
-                <span>ИЗБРАННОЕ</span>
-                <b class="favorites-count" data-favorites-count>0</b>
+                <span class="header-favorites__heart" aria-hidden="true">♡</span>
+                <span class="header-favorites__label">ИЗБРАННОЕ</span>
+                <b class="favorites-count" data-favorites-count hidden>0</b>
             </a>
             <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
-                ☼ <span>СВЕТЛАЯ</span>
+                <span class="theme-toggle__symbol" aria-hidden="true">☀</span>
+                <span class="theme-toggle__label">СВЕТЛАЯ</span>
             </button>
         `;
         const cta = header.querySelector(".header-cta");

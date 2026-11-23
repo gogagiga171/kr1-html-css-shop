@@ -1616,3 +1616,69 @@ img {
 @media (prefers-reduced-motion: reduce) {
     .product-card:hover .product-card__bottom::before { animation: none; }
 }
+/* ===== Responsive polish: mobile two-column catalog and accessible controls ===== */
+.header-tools { gap: 8px; }
+.header-favorites, .theme-toggle {
+    border-radius: 999px;
+    min-height: 42px;
+    padding: 8px 13px;
+    gap: 8px;
+    transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.header-favorites:hover, .theme-toggle:hover { transform: translateY(-1px); box-shadow: 0 5px 16px #0002; }
+.header-favorites__heart { font-size: 19px; color: var(--accent); transition: transform .2s ease; }
+.header-favorites:hover .header-favorites__heart { transform: scale(1.18); }
+.theme-toggle__symbol { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: 15px; background: color-mix(in srgb, var(--accent) 15%, transparent); }
+.theme-toggle__label, .header-favorites__label { font-size: inherit; }
+.favorite-toggle {
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    box-shadow: 0 2px 8px #0002;
+    transition: color .2s ease, background .2s ease, border-color .2s ease, transform .22s ease, box-shadow .2s ease;
+}
+.favorite-toggle:hover { transform: scale(1.07); box-shadow: 0 4px 14px #0003; }
+.favorite-toggle.is-active { background: color-mix(in srgb, var(--accent) 13%, var(--panel)); color: var(--accent); }
+.favorite-toggle.is-active span { display: inline-block; animation: favorite-pop .24s ease; }
+@keyframes favorite-pop { 50% { transform: scale(1.35); } }
+.favorite-toggle:focus-visible, .theme-toggle:focus-visible, .header-favorites:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+@media (max-width: 650px) {
+    .products-grid, .catalog-products .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 9px;
+    }
+    .product-card { padding: 9px; border-radius: 3px; }
+    .product-card__image-wrap { height: clamp(105px, 33vw, 155px); }
+    .product-card__code { margin: 10px 0 5px; font-size: 7px; letter-spacing: 1px; }
+    .product-card__title { min-height: 0; font-size: clamp(13px, 3.8vw, 16px); line-height: 1.25; }
+    .product-card__description { display: none; }
+    .product-card__bottom { align-items: center; gap: 6px; padding-top: 14px; }
+    .product-card__bottom::before { left: -9px; right: -9px; height: 5px; }
+    .product-card__price { font-size: clamp(12px, 3.6vw, 16px); white-space: normal; line-height: 1.15; }
+    .product-card__button { min-height: 32px; padding: 7px 6px; font-size: 7px; letter-spacing: .2px; flex: 1 1 auto; }
+    .favorite-toggle { width: 31px; height: 31px; flex-basis: 31px; }
+    .favorite-toggle span { font-size: 19px; }
+    .product-card__badge { top: 14px; left: 14px; padding: 4px 5px; font-size: 7px; }
+    .catalog-filters__form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .catalog-filters__group { min-width: 0; }
+    .catalog-filters__group input, .catalog-filters__group select { max-width: 100%; }
+    .site-header__inner { flex-wrap: wrap; }
+    .site-nav { width: 100%; order: 3; overflow-x: auto; }
+    .site-nav__list { width: max-content; min-width: 100%; }
+    .header-cta { order: 2; margin-left: auto; }
+    .header-tools { width: auto; order: 4; margin-left: 0; }
+    .header-favorites, .theme-toggle { min-height: 36px; padding: 7px 10px; font-size: 8px; }
+}
+@media (max-width: 370px) {
+    .products-grid, .catalog-products .products-grid { gap: 7px; }
+    .product-card { padding: 7px; }
+    .product-card__image-wrap { height: 112px; }
+    .product-card__bottom { flex-wrap: wrap; }
+    .product-card__price { width: 100%; }
+    .product-card__button { min-width: 0; }
+    .header-favorites__label, .theme-toggle__label { display: none; }
+    .header-favorites, .theme-toggle { width: 38px; padding: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .favorite-toggle, .favorite-toggle.is-active span, .header-favorites, .theme-toggle { animation: none !important; transition: none !important; }
+}

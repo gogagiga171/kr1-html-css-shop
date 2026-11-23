@@ -7,6 +7,9 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+    <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem("instrumental-theme") === "light" ? "light" : "dark"; } catch {}
+  </script>
   <link href="css/style.css" rel="stylesheet"/>
   <meta content="Контактная информация и форма связи INSTRUMENTAL." name="description"/>
   <title>
@@ -20,7 +23,10 @@
   </script>
   <script defer="True" src="js/to-top.js">
   </script>
-     <script src="js/theme.js"></script>
+     
+   
+   <script defer src="js/theme.js"></script>
+  <script defer src="js/favorites.js"></script>
  </head>
  <body>
   <div class="topbar" id="topbar">

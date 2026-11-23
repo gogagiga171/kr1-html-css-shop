@@ -17,7 +17,9 @@
         } catch {
             // Браузер может запретить localStorage; интерфейс продолжит работать до перезагрузки.
         }
-        updateAll();
+        updateCounters();
+        updateButtons();
+        if (document.querySelector("#favorites-products")) renderFavoritesPage();
     }
 
     function isFavorite(name) {
@@ -170,46 +172,27 @@
     });
 
 
-function initialize() {
-    decorateCards();
-    updateAll();
+    function initialize() {
+        decorateCards();
+        updateCounters();
+        updateButtons();
+        renderFavoritesPage();
 
-    let decorating = false;
-
-    const observer = new MutationObserver(records => {
-        if (decorating) return;
-
-        const addedElements = [];
-
-        for (const record of records) {
-            record.addedNodes.forEach(node => {
-                if (node.nodeType === Node.ELEMENT_NODE) {
-                    addedElements.push(node);
-                }
-            });
-        }
-
-        if (!addedElements.length) return;
-
-        decorating = true;
-
-        requestAnimationFrame(() => {
-            addedElements.forEach(node => {
-                if (node.isConnected) {
+        // Наблюдаем только за добавлением карточек товаров.
+        // Изменения кнопок/сердечек не запускают повторную перерисовку.
+        const observer = new MutationObserver(records => {
+            let cardsAdded = false;
+            records.forEach(record => record.addedNodes.forEach(node => {
+                if (node.nodeType !== Node.ELEMENT_NODE) return;
+                if (node.matches?.(".product-card") || node.querySelector?.(".product-card")) {
                     decorateCards(node);
+                    cardsAdded = true;
                 }
-            });
-
-            updateButtons();
-            decorating = false;
+            }));
+            if (cardsAdded) updateButtons();
         });
-    });
-
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-}
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
 
 
     if (document.readyState === "loading") {
