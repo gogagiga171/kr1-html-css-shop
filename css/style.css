@@ -1683,3 +1683,147 @@ img {
 @media (prefers-reduced-motion: reduce) {
     .favorite-toggle, .favorite-toggle.is-active span, .header-favorites, .theme-toggle { animation: none !important; transition: none !important; }
 }
+
+/* ===== MOBILE FOOTER AND CONTACTS LAYOUT ===== */
+@media (max-width: 520px) {
+    .site-footer {
+        padding: 34px 0 18px;
+    }
+
+    .site-footer__main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        column-gap: 18px;
+        row-gap: 26px;
+    }
+
+    .site-footer__brand {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .site-footer__brand .site-logo {
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    .site-footer__about {
+        margin-top: 12px !important;
+        text-align: center;
+    }
+
+    .site-footer__main > .site-footer__column {
+        min-width: 0;
+        grid-column: auto;
+    }
+
+    .site-footer__main > .site-footer__column h3 {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
+    .site-footer__contacts {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .site-footer__contacts h3 {
+        grid-column: 1 / -1;
+    }
+
+    .footer-contact {
+        grid-template-columns: 16px minmax(0, 1fr);
+        gap: 6px;
+        min-width: 0;
+    }
+
+    .footer-contact img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .footer-contact__text {
+        display: block;
+        min-width: 0;
+        font-size: 10px;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+    }
+
+    .footer-contact__text strong,
+    .footer-contact__text a,
+    .footer-contact__text span {
+        display: block !important;
+    }
+
+    .site-footer__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 26px;
+        padding-top: 16px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .site-footer__bottom span,
+    .site-footer__bottom a {
+        text-align: center;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px;
+        padding: 26px 0 38px;
+    }
+
+    .contact-card {
+        min-width: 0;
+        min-height: 0;
+        padding: 15px 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-card .advantage-card__number {
+        font-size: 9px;
+        letter-spacing: .4px;
+    }
+
+    .contact-card h2 {
+        margin: 17px 0 9px;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    .contact-card a,
+    .contact-card p {
+        font-size: 11px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 360px) {
+    .site-footer__main {
+        column-gap: 12px;
+    }
+
+    .site-footer__main > .site-footer__column h3 {
+        font-size: 12px;
+    }
+
+    .contact-card {
+        padding: 13px 10px;
+    }
+
+    .contact-card h2 {
+        font-size: 14px;
+    }
+}

@@ -49,7 +49,7 @@ if (!product) {
                 <img
                     class="product-detail__image"
                     src="${product.image}"
-                    alt="${product.alt}"
+                    alt="${product.alt || product.name}"
                 >
             </div>
             <div class="product-detail__info">

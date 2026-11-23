@@ -17,7 +17,7 @@ if (root && Array.isArray(products)) {
                 <img
                     class="product-card__img"
                     src="${product.image}"
-                    alt="${product.alt}"
+                    alt="${product.alt || product.name}"
                     loading="lazy"
                 >
             </a>

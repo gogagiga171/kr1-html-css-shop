@@ -128,7 +128,7 @@
                    href="product.html?name=${encodeURIComponent(product.name)}"
                    aria-label="Подробнее: ${escapeHtml(product.name)}">
                     <img class="product-card__img" src="${escapeHtml(product.image)}"
-                         alt="${escapeHtml(product.alt)}" loading="lazy">
+                         alt="${escapeHtml(product.alt || product.name)}" loading="lazy">
                 </a>
                 <p class="product-card__code">ITEM / ${String(index + 1).padStart(3, "0")} — SAVED</p>
                 <h3 class="product-card__title">
