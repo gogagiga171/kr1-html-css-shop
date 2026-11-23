@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /favorites.html
+
+# Add Sitemap directive after publishing the site on its permanent domain.

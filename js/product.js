@@ -15,7 +15,32 @@ if (!product) {
     `;
     reviewsSection.hidden = true;
 } else {
-    document.title = `${product.name} — Instrumental`;
+    document.title = `${product.name} — купить в INSTRUMENTAL`;
+    const productDescription = `${product.description}. Цена: ${product.price.toLocaleString("ru-RU")} ₽. Категория: ${categories[product.category] || "Инструменты"}.`;
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+    if (descriptionMeta) descriptionMeta.setAttribute("content", productDescription.slice(0, 300));
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", document.title);
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute("content", productDescription.slice(0, 300));
+    const productSchema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.name,
+        "description": product.description,
+        "image": product.image,
+        "category": categories[product.category] || product.category,
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "RUB",
+            "price": String(product.price),
+            "url": location.href
+        }
+    };
+    const schemaNode = document.createElement("script");
+    schemaNode.type = "application/ld+json";
+    schemaNode.textContent = JSON.stringify(productSchema);
+    document.head.append(schemaNode);
     breadcrumb.textContent = product.name;
 
     detail.innerHTML = `
@@ -24,7 +49,7 @@ if (!product) {
                 <img
                     class="product-detail__image"
                     src="${product.image}"
-                    alt="${product.name}"
+                    alt="${product.alt}"
                 >
             </div>
             <div class="product-detail__info">

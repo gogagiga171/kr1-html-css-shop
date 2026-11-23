@@ -61,7 +61,7 @@ function renderProducts() {
                 <img
                     class="product-card__img"
                     src="${product.image}"
-                    alt="${product.name}"
+                    alt="${product.alt}"
                     loading="lazy"
                 >
             </a>

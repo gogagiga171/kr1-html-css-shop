@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace https://YOUR-DOMAIN-HERE/ with the site's real domain before publishing. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>index.html</loc></url>
-    <url><loc>catalog.html</loc></url>
-    <url><loc>about.html</loc></url>
-    <url><loc>contacts.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN-HERE/</loc></url>
+  <url><loc>https://YOUR-DOMAIN-HERE/catalog.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN-HERE/about.html</loc></url>
+  <url><loc>https://YOUR-DOMAIN-HERE/contacts.html</loc></url>
 </urlset>

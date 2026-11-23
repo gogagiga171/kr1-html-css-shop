@@ -30,3 +30,12 @@ python -m http.server 8000
 - `js/topbar.js` — движение полосок верхней ленты по направлению прокрутки.
 
 Отзывы сохраняются в `localStorage` браузера. Для реального приёма и обработки заявок необходимо подключить серверную часть.
+
+
+## SEO update
+- Titles and descriptions are made unique for key pages.
+- Open Graph and Twitter card metadata added.
+- LocalBusiness/HardwareStore structured data added on home and contacts.
+- Product page metadata and Product/Offer JSON-LD are set dynamically based on selected product.
+- Favorites page is marked noindex; robots.txt excludes it.
+- IMPORTANT: Replace YOUR-DOMAIN-HERE in sitemap.xml with the final HTTPS domain before publishing. Add canonical URLs and a Sitemap directive to robots.txt after domain is confirmed.
